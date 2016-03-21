@@ -1,0 +1,20 @@
+body {
+	text-align: center;
+	background-color: #c58787;
+}
+
+#currentWord {
+	height: 25px;
+}
+
+.goalWordLetters {
+	margin: auto;
+	width: 25px;
+	display: inline-block;
+}
+
+#hangmanCanvas {
+	height: 350px;
+	width: 400px;
+	background-color: white;
+}
