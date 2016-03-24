@@ -54,12 +54,73 @@ var drawLine = function (x1, y1, x2, y2) {
 }
 //for the gallow
 var gallow = function () {
+	//y beam
 	drawLine(15, 170, 15, 15);
+	//x beam
 	drawLine(10, 15, 150, 15);
-	drawLine(15, 30, 45, 15)
+	//should be diagonal
+	drawLine(15, 30, 45, 15);
+	//rope
+	//drawLine(120, 15, 120, 25);
+	// //neck and torso
+	// drawLine(120, 45, 120, 100);
+	// //left arm
+	// drawLine(120, 50, 110, 70);
+	// //righth arm 
+	// drawLine(120, 50, 130, 70);
+	// //left leg
+	// drawLine(120, 100, 110, 120);
+	// //right left
+	// drawLine(120, 100, 130, 120)
+
+};
+
+//a function to add each segment of the hangman for each missed attempt
+var missedAttempts = function (attempts) {
+	//an object to hold each segment of the hangman drawing
+	var missedNumber = {
+		//rope
+		1: function () {
+			drawLine(120, 15, 120, 25)
+		},
+		//head
+		2: function () {
+			head(120, 35, 10, 0, 2)
+		},
+		//neck and torso
+		3: function () {
+			drawLine(120, 45, 120, 100)
+		},
+		//left arm
+		4: function () {
+			drawLine(120, 50, 110, 70)
+		},
+		//right arm
+		5: function () {
+			drawLine(120, 50, 130, 70)
+		},
+		//left leg
+		6: function () {
+			drawLine(120, 100, 110, 120)
+		},
+		//right leg0
+		7: function () {
+			drawLine(120, 100, 130, 120)
+		}
+	};
+	return missedNumber[attempts]();
 }
 
-var hangmanGame = function () {	
+
+var head = function (x, y, radius, start, stop) {
+	var head = canvas.getContext("2d");
+	head.beginPath();
+	head.arc(x, y, radius, start, stop * Math.PI);
+	head.stroke();
+}	
+
+var hangmanGame = function () {
+
 	//to store the random goal word
 	var goalWord = generateRandomWord();
 	//a copy of the goal word
@@ -79,7 +140,8 @@ var hangmanGame = function () {
 			//button to highlight when key is inputted
 			var buttonToHighlight = "#" + keyBindings[key];
 			//if a letter key has been inputted
-			if (keyBindings.hasOwnProperty(key)) {
+			//and if the goal has not been met and if attempts are below 7
+			if (keyBindings.hasOwnProperty(key) && goal !== 0 && attempts < 7) {
 				console.log("The " + keyBindings[key] + " key was pressed");
 				//check the key inputted against the letters in the goal array
 				//Remember: strings can be treated like arrays
@@ -113,12 +175,14 @@ var hangmanGame = function () {
 							$(buttonToHighlight).css("background-color", "red");
 							//increase the attempts counter
 							attempts++;
+							//draw a segment of the hangman
+							missedAttempts(attempts);
 						}
 					}
 			}
 		})
 	}
-
+	
 	keyboardInputForHangman();
 	letterDisplay();
 	gallow();
