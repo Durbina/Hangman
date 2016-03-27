@@ -1,10 +1,23 @@
 body {
 	text-align: center;
-	background-color: #c58787;
+	background-color: #30bae5;
+}
+
+h1 {
+	margin-top: 3%;
+}
+
+#letterDisplayContainer {
+	margin-top: 2%;
+}
+
+canvas {
+	margin-top: 5%
 }
 
 #currentWord {
 	height: 25px;
+	margin-top: 15%;
 }
 
 .goalWordLetters {
@@ -13,8 +26,19 @@ body {
 	display: inline-block;
 }
 
-#hangmanCanvas {
+.btn-default {
+	background-color: #30bae5;
+	border: none;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active {
+	background-color: #30bae5;
+	border: none;
+}
+
+
+#hangmanCanvas { 
 	height: 350px;
 	width: 400px;
-	background-color: white;
+	background-color: #30bae5;
 }
