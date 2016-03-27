@@ -9,6 +9,7 @@ h1 {
 
 #letterDisplayContainer {
 	margin-top: 2%;
+	clear: left;
 }
 
 canvas {
@@ -26,12 +27,8 @@ canvas {
 	display: inline-block;
 }
 
-.btn-default {
-	background-color: #30bae5;
-	border: none;
-}
 
-.btn-default:hover, .btn-default:focus, .btn-default:active {
+.alphabetButtons, .alphabetButtons:hover, .alphabetButtons:focus, .alphabetButtons:active {
 	background-color: #30bae5;
 	border: none;
 }
@@ -41,4 +38,16 @@ canvas {
 	height: 350px;
 	width: 400px;
 	background-color: #30bae5;
+}
+
+#gitHubLink {
+	background-color: #e55b30;
+	border: none;
+	float: left;
+}
+
+#jsFiddleLink {
+	background-color: #e55b30;
+	border: none;
+	float: right;
 }

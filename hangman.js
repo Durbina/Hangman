@@ -18,7 +18,7 @@ var letterDisplay = function () {
 		var $letterButton = $("<button>").attr({
 			"type": "button",
 			"id": arrayOfAlphabet[i],
-			"class": "btn btn-default"
+			"class": "btn btn-default alphabetButtons"
 		}).text(arrayOfAlphabet[i]);
 		toAppend.push($letterButton)
 	}
@@ -204,16 +204,25 @@ var hangmanGame = function () {
 
 //function for if a button is clicked
 var buttonClick = function () {
-	$(".btn").click(function () {
+	//if an alphabet button is clicked
+	$(".alphabetButtons").click(function () {
 		alert("Please type a letter")
 	});
+	//for the JSFiddle Link
+	$("#jsFiddleLink").click(function () {
+		location.href="http://jsfiddle.net/windupdurb/35r8k89s/"
+	})
+	//for the Git Hub Link
+	$("#gitHubLink").click(function () {
+		location.href="https://github.com/Durbina/Hangman"
+	})
+
 }
 
 $(document).ready(function () {
 	hangmanGame();
 	buttonClick();
 })
-
 
 
 
